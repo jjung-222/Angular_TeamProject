@@ -12,10 +12,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
     
-    
     <script src="app.js"></script>
     <script src="appRoute.js"></script>
     
+    <script src="controllers/loginController.js"></script>
+
+    
+    <script src="services/loginService.js"></script>
+
 </head>
 <!-- <body ng-app="app">-->
 <!-- ng태그를 body에도 사용 가능 -->
@@ -23,10 +27,10 @@
     <div class="d-flex flex-column vh-100">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark text-white font-weight-bold justify-content-between">
             <a class="navbar-brand" href="./">
-            <img src="./resources/img/angular.png" width="30" height="30" class="d-inline-block align-top">
-            AngularJS
+            <!-- <img src="./resources/img/angular.png" width="30" height="30" class="d-inline-block align-top"> -->
+            THE, FIVE
             </a>
-            <div>
+            <div ng-show="uid">
                     ID: {{uid}}<button class="btn btn-success btn-sm ml-2" ng-click="logout()">로그아웃</button>
             </div>
         </nav>
