@@ -7,7 +7,8 @@ angular.module("app")
         //}); //이게 없으면 /#!/ 가 생김
 
         $routeProvider
-            .when("/home", {templateUrl: "views/home.html", controller: "loginController"})
-            .when("/notice_list", {templateUrl: "views/notice_list.html"})             
+            .when("/home", {templateUrl: "views/home.html", controller: "loginController"})  
+            .when("/notice", {templateUrl: "views/notice/index.html", controller:"noticeController"})
+          
             .otherwise({redirectTo: "/home"});
     });

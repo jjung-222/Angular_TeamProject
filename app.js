@@ -1,6 +1,10 @@
 angular.module("app", ["ngRoute"]) //대괄호가 있으면 생성, 없으면 있는것을 가져다가 쓰는것
     .config(function() {
+        // ['$qProvider', function ($qProvider) {
 
+        //     $qProvider.errorOnUnhandledRejections(false);
+        
+        // }]
     })
     .run(function($rootScope, $http) {
 
@@ -25,6 +29,7 @@ angular.module("app", ["ngRoute"]) //대괄호가 있으면 생성, 없으면 �
             $rootScope.authToken="";
             sessionStorage.removeItem("uid");
             sessionStorage.removeItem("authToken");
+            $location.url("/home");
         }
 
         //이전 URL과 동일한 URL일 경우 리프레쉬함
