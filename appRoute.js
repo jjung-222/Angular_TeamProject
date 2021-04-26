@@ -17,5 +17,6 @@ angular.module("app")
             .when("/auth", {templateUrl: "views/user/index.html", controller:"userController"})
             .when("/pqna", {templateUrl: "views/productQna/index.html", controller:"pqnaController"})
             .when("/product", {templateUrl: "views/product/index.html", controller:"productController"})
+
             .otherwise({redirectTo: "/home"});
     }); 

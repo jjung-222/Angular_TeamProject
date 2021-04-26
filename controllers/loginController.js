@@ -1,5 +1,15 @@
 angular.module("app")
-  .controller("loginController", function($scope, loginService, $window, $rootScope, $location) { //서비스(exam26Service) 주입받음
+  .controller("loginController", function($scope, loginService, reviewService,
+                                          orderService ,$window, $rootScope, $location) { //서비스(exam26Service) 주입받음
+    $scope.$on("$routeChangeSuccess", () => {
+      if($rootScope.uid != null){
+        $scope.getReviewCount();
+        $scope.getOrderCount();
+        $scope.getReviewList();
+      }
+    });
+
+
     $scope.login = (user) => {
       loginService.login(user)
         .then((response) => {
@@ -23,4 +33,31 @@ angular.module("app")
           $window.alert("로그인 실패: ", response.data);
         });
     }
+
+    $scope.getReviewCount = () => {
+      reviewService.reviewCount()
+        .then((response) => {
+          $scope.reviewCount = response.data;
+        });
+    }
+
+    $scope.getOrderCount = () => {
+      orderService.orderCount()
+        .then((response) => {
+          $scope.orderCount = response.data;
+        });
+    }
+
+    $scope.getReviewList = () => {
+      reviewService.bestReview()
+        .then((response) => {
+          $scope.reviews = response.data;
+        });
+    }
+
+    
+    $scope.battachUrl = (boardno) => {
+        return reviewService.battachUrl(boardno);
+    };
+
   });
