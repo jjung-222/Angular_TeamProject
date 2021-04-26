@@ -1,11 +1,14 @@
 angular.module("app")
-  .controller("loginController", function($scope, loginService, reviewService,
+  .controller("loginController", function($scope, loginService, reviewService,userService, productService,
                                           orderService ,$window, $rootScope, $location) { //서비스(exam26Service) 주입받음
     $scope.$on("$routeChangeSuccess", () => {
       if($rootScope.uid != null){
         $scope.getReviewCount();
         $scope.getOrderCount();
         $scope.getReviewList();
+        $scope.userCount();
+        $scope.adminlist();
+        $scope.getMainList();
       }
     });
 
@@ -60,4 +63,28 @@ angular.module("app")
         return reviewService.battachUrl(boardno);
     };
 
+    $scope.userCount = () => {
+      userService.userCount()
+      .then((response => {
+        console.log(response);
+        $scope.usercount = response.data;
+      }))
+    }
+
+    $scope.adminlist = () => {
+      userService.adminlist()
+      .then((response) => {
+        console.log(response);
+       $scope.adminlists = response.data;
+      })
+    }
+
+    $scope.getMainList = () => {      
+      productService.mainlist()
+      .then((response) => {
+        $scope.totalRows = response.data.totalRows;
+        $scope.best = response.data.best;
+        $scope.newitem = response.data.newitem;
+      });
+    }
   });
