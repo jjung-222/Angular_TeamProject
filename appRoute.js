@@ -18,4 +18,4 @@ angular.module("app")
             .when("/pqna", {templateUrl: "views/productQna/index.html", controller:"pqnaController"})
             .when("/product", {templateUrl: "views/product/index.html", controller:"productController"})
             .otherwise({redirectTo: "/home"});
-    });
+    }); 
