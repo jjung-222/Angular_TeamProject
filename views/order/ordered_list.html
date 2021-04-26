@@ -38,7 +38,7 @@
     <div class="text-center" ng-if="orders.length != '0'">
         <button class="btn btn-outline-secondary btn-sm" 
                     ng-click="getList(1)">처음</button> <!--처음이란 것은 항상 존재-->
-        <button class="btn btn-outline-info btn-sm" 
+        <button class="btn btn-outline-dark btn-sm" 
                     ng-show="pager.groupNo>1" 
                     ng-click="getList(pager.startPageNo-1)">이전</button> <!--있을 수도 있고 없을 수도 있음. ng-show -->
         <button ng-repeat="i in pageRange"
