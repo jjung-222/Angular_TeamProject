@@ -9,9 +9,7 @@ angular.module("app")
         $scope.getView = () => {
             switch($scope.view) {
                 case "list": return "views/productReview/reviewList.html";
-                // case "create": return "views/exam26_http_boards/create.html";
                 case "read": return "views/productReview/reviewRead.html";
-                // case "update": return "views/exam26_http_boards/update.html";
             }
         }
 
