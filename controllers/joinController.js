@@ -20,11 +20,11 @@ angular.module("app")
       joinService.join(user)
       .then((response) => {
         console.log(response);
-       // $location.url("/home");
+        $location.url("/home");
       }).catch((response) => {
         console.log(response);
         //$window.alert("로그인 실패: ", response.data);
-        //$location.url("/home")
+        $location.url("/home")
       });
     }
   });
