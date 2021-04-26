@@ -8,6 +8,10 @@ angular.module("app")
         const promise = $http.get(BASE_URL, {params:{pageNo}}); //get이 리턴하는 것이 무엇? promise(비동기 처리하는 것)
         return promise;
       },
+      mainlist: function() { 
+        const promise = $http.get(BASE_URL+ "/mainlist");
+        return promise;
+      },
       read: function(productno) {
         const promise = $http.get(BASE_URL + "/" + productno);
         return promise;
