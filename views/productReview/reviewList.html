@@ -45,18 +45,18 @@
         </tr>
         <tr ng-if="reviews.length != '0'">
             <td colspan="7" style="text-align: center;" >
-                <button class="btn btn-outline-primary btn-sm" 
+                <button class="btn btn-dark btn-sm" 
                         ng-click="getList(1)">처음</button> 
-                <button class="btn btn-outline-info btn-sm" 
+                <button class="btn btn-light btn-sm" 
                         ng-show="pager.groupNo>1" 
                         ng-click="getList(pager.startPageNo-1)">이전</button>
                 <button ng-repeat="i in pageRange"
-                        class="btn btn-sm {{(pager.pageNo==i)?'btn-danger':'btn-outline-success'}} {{!$last?'mr-1':''}}" 
+                        class="btn btn-sm {{(pager.pageNo==i)?'btn btn-secondary btn-sm':'btn btn-outline-secondary btn-sm'}} {{!$last?'mr-1':''}}" 
                         ng-click="getList(i)">{{i}}</button>
-                <button class="btn btn-outline-info btn-sm" 
+                <button class="btn btn-light btn-sm" 
                         ng-show="pager.groupNo < pager.totalGroupNo" 
                         ng-click="getList(pager.endPageNo+1)">다음</button>
-                <button class="btn btn-outline-primary btn-sm" 
+                <button class="btn btn-dark btn-sm" 
                         ng-click="getList(pager.totalPageNo)">맨끝</button>
             </td>
         </tr>
