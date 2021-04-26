@@ -1,7 +1,6 @@
 
 
 <div class="form-group row ml-0 mr-0 mt-3">
-
     <div class="mr-1">
         <select class="form-control form-control-sm" ng-model="searchType" ng-required="true">
             <option value="titlecontent">제목+내용</option>
@@ -9,7 +8,7 @@
             <option value="productname">상품명</option>
         </select>
     </div>
-
+ 
     <div class="mr-1">
         <input type="text" class="form-control form-control-sm" 
                     ng-keypress="onKeyPress($event, searchType, keyword)"
@@ -24,6 +23,7 @@
     <table class="table table-bordered">
         <tr>
             <th>번호</th>
+            <th>사진</th>
             <th>상품명</th>
             <th>제목</th>
             <th>글쓴이</th>
@@ -31,15 +31,20 @@
             <th>조회수</th>
         </tr>
         <tr ng-repeat="review in reviews">
-            <td>{{review.boardno}}</td>
-            <td>{{review.pname}}</td>
-            <td><a ng-click="read(review.boardno)" href="">{{review.btitle}}</a></td>
-            <td>{{review.userid}}</td>
-            <td>{{review.bdate | date:"yyyy.MM.dd"}}</td>
-            <td>{{review.bcount}}</td>
+            <td class="align-middle">{{review.boardno}}</td>
+            <td class="text-center">
+                <a ng-hide="review.borgimg == null" href="{{battachUrl(review.boardno)}}">
+                    <img src="{{battachUrl(review.boardno)}}" width="100"/>
+                </a>
+            </td>
+            <td class="align-middle">{{review.pname}}</td>
+            <td class="align-middle"><a ng-click="read(review.boardno)" href="">{{review.btitle}}</a></td>
+            <td class="align-middle">{{review.userid}}</td>
+            <td class="align-middle">{{review.bdate | date:"yyyy.MM.dd"}}</td>
+            <td class="align-middle">{{review.bcount}}</td>
         </tr>
         <tr ng-if="reviews.length != '0'">
-            <td colspan="6" style="text-align: center;" >
+            <td colspan="7" style="text-align: center;" >
                 <button class="btn btn-outline-primary btn-sm" 
                         ng-click="getList(1)">처음</button> 
                 <button class="btn btn-outline-info btn-sm" 
