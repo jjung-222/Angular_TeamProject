@@ -57,11 +57,11 @@
             </div>
         </div>
 
-        <div class="flex-grow-1 container-fluid">
+        <div class="flex-grow-1 container-fluid" >
             <div class="row h-100">
             <div class="col-md-6 col-lg-2 p-3 bg-white">
                 <div class="h-100 d-flex flex-column">
-                <div class="flex-grow-1" style="height:0px; overflow-y: auto; overflow-x: hidden;">
+                <div class="flex-grow-1" style="height:0px; overflow-y: auto; overflow-x: hidden;" ng-show="uid">
                     <ng-include src="'appMenu.html'"></ng-include>
                     <!-- ng가 들어가면 코드가 들어가야함 다양한 연산식도 가능-->
                 </div>
@@ -78,7 +78,7 @@
             
             <div class="col-md-6 col-lg-2 p-3 bg-black">
                 <div class="h-50 d-flex flex-column">
-                    <div class="flex-grow-1 p-2" style="height:0px; overflow-y: auto; overflow-x: hidden; border: solid 1px black; border-radius: 15px;">
+                    <div class="flex-grow-1 p-2" style="height:0px; overflow-y: auto; overflow-x: hidden; border: solid 1px black; border-radius: 15px;" ng-show="uid">
                         <ng-include src="'profile.html'"></ng-include>
                         <!-- ng가 들어가면 코드가 들어가야함 다양한 연산식도 가능-->
                     </div>

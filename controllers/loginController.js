@@ -3,13 +3,18 @@ angular.module("app")
     $scope.login = (user) => {
       loginService.login(user)
         .then((response) => {
+          console.log(response);
           $rootScope.uid = response.data.uid; //스프링의 map의 정보를 받음
           $rootScope.authToken = response.data.authToken;
+          $rootScope.uemail = response.data.email;
+
           console.log($rootScope.uid);
           console.log($rootScope.uname);
+          console.log($rootScope.uemail);
 
 
           sessionStorage.setItem("uid", response.data.uid); //세션에 저장(웹의 네트워크 콘솔)
+          sessionStorage.setItem("uemail", response.data.email);
           sessionStorage.setItem("authToken", response.data.authToken);
           console.log("로그인성공");
           $location.url("/");
