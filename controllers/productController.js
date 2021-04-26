@@ -14,6 +14,14 @@ angular.module("app")
       }
     };
 
+    $scope.getMainList = () => {      
+      productService.mainlist()
+      .then((response) => {
+        $scope.totalRows = response.data.totalRows;
+        $scope.best = response.data.best;
+        $scope.newitem = response.data.newitem;
+      });
+    }
 
     $scope.createProductForm = () => {
       $scope.product = null;
