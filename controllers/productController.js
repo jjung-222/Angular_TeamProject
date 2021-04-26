@@ -114,9 +114,10 @@ angular.module("app")
         })     
     };
 
-    $scope.updateProduct = (product) => {
+    $scope.updateProduct = (product, imglist) => {
       if(product.pname && product.pcategory && product.pprice && product.psalescount && product.pstock && product.penable) {
         var formData = new FormData();
+        formData.append("productno", product.productno);        
         formData.append("pname", product.pname);
         formData.append("pcategory", product.pcategory);
         formData.append("pprice", product.pprice);
@@ -124,13 +125,17 @@ angular.module("app")
         formData.append("pstock", product.pstock);
         formData.append("penable", product.penable);
         
+        formData.append("imgno1", imglist[0].imgno);
+        formData.append("imgno2", imglist[1].imgno);
+        formData.append("imgno3", imglist[2].imgno);
+        formData.append("imgno4", imglist[3].imgno);
         var img1 = $("#img1")[0].files[0];
         var img2 = $("#img2")[0].files[0];
         var img3 = $("#img3")[0].files[0];
         var img4 = $("#img4")[0].files[0];
         var img5 = $("#img5")[0].files[0];
         if(img1) { //첨부파일이 있을 경우
-          formData.append("pattach1", img1);
+          formData.append("pattach1", img1);          
         } 
         if(img2) {
           formData.append("pattach2", img2);
@@ -139,10 +144,10 @@ angular.module("app")
           formData.append("pattach3", img3);
         } 
         if(img4) {
-          formData.append("pattach4", img4);
+          formData.append("pattach4", img4);             
         } 
         if(img5) {
-          formData.append("pattach5", img5);
+          formData.append("pattach5", img5);                    
         }         
         productService.update(formData)
           .then((response) => {
