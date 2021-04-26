@@ -9,6 +9,7 @@ angular.module("app")
         $routeProvider
             .when("/home", {templateUrl: "views/home.html", controller: "loginController"})  
             .when("/notice", {templateUrl: "views/notice/index.html", controller:"noticeController"})
+            .when("/product", {templateUrl: "views/product/index.html", controller:"productController"})
           
             .otherwise({redirectTo: "/home"});
     });

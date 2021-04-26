@@ -3,11 +3,11 @@ angular.module("app")
     $scope.login = (user) => {
       loginService.login(user)
         .then((response) => {
-          $rootScope.uid = response.data.userid; //스프링의 map의 정보를 받음
+          $rootScope.uid = response.data.uid; //스프링의 map의 정보를 받음
           $rootScope.authToken = response.data.authToken;
           console.log($rootScope.uid);
 
-          sessionStorage.setItem("uid", response.data.userid); //세션에 저장(웹의 네트워크 콘솔)
+          sessionStorage.setItem("uid", response.data.uid); //세션에 저장(웹의 네트워크 콘솔)
           sessionStorage.setItem("authToken", response.data.authToken);
           console.log("로그인성공");
           $location.url("/");
