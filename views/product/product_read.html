@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-header">
+      read.html
+  </div>
+  <div class="card-body">
+      <div>
+          <div class="form-group">
+              <label>상품이름:</label>
+              <input class="form-control" ng-model="product.pname" readonly/>
+          </div>
+          <div class="form-group">
+              <label>작성자:</label>
+              <input class="form-control" value="{{uid}}" readonly/>
+          </div>
+          <div class="form-group">
+              <label>카테고리:</label>
+              <input class="form-control" ng-model="product.pcategory" readonly/>
+          </div>
+          <div class="form-group">
+              <label>상품가격:</label>
+              <input class="form-control" ng-model="product.pprice" readonly/>
+          </div>
+          <div class="form-group">
+            <label>판매갯수:</label>
+            <input class="form-control" ng-model="product.psalescount" readonly/>
+          </div>
+          <div class="form-group">
+            <label>재고갯수:</label>
+            <input class="form-control" ng-model="product.pstock" readonly/>
+          </div>
+          <div class="form-group">
+            <label>상품활성화:</label>
+            <input class="form-control" ng-model="product.penable" readonly/>
+          </div>
+      <div class="form-group">
+        <label>첨부:</label>
+        <a ng-hide="product.detailimgoname == null" href="{{battachUrl(product.productno)}}">
+            <img src="{{battachUrl(product.productno)}}" width="200"/>
+        </a>
+      </div>
+      <div class="form-group">
+        <label>첨부:</label>
+        <a ng-hide="imglist[0].ioriginalname == null" href="{{imgbattachUrl(imglist[0].imgno)}}">
+            <img src="{{imgbattachUrl(imglist[0].imgno)}}" width="200"/>
+        </a>
+      </div>
+      <div class="form-group">
+        <label>첨부:</label>
+        <a ng-hide="imglist[1].ioriginalname == null" href="{{imgbattachUrl(imglist[1].imgno)}}">
+            <img src="{{imgbattachUrl(imglist[1].imgno)}}" width="200"/>
+        </a>
+      </div>
+      <div class="form-group">
+        <label>첨부:</label>
+        <a ng-hide="imglist[2].ioriginalname == null" href="{{imgbattachUrl(imglist[2].imgno)}}">
+            <img src="{{imgbattachUrl(imglist[2].imgno)}}" width="200"/>
+        </a>
+      </div>
+      <div class="form-group">
+        <label>첨부:</label>
+        <a ng-hide="imglist[3].ioriginalname == null" href="{{imgbattachUrl(imglist[3].imgno)}}">
+            <img src="{{imgbattachUrl(imglist[3].imgno)}}" width="200"/>
+        </a>
+      </div>
+
+          <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo)">목록</button>
+          <button class="btn btn-primary btn-sm" ng-click="updateProductForm(product.productno)">수정</button> 
+          <button class="btn btn-primary btn-sm" ng-click="deleteProduct(product.productno)">삭제</button>       
+      </div>
+  </div>
+</div>
