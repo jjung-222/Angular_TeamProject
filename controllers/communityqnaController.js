@@ -4,6 +4,7 @@ angular.module("app")
       $scope.getList(1);
     });
 
+    $scope.showpage = "";
     $scope.keyword = "";
     $scope.searchType = "";
     $scope.boardno = "";

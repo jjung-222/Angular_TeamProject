@@ -11,6 +11,7 @@ angular.module("app", ["ngRoute"]) //대괄호가 있으면 생성, 없으면 �
         //세션 저장소에 있는 uid, authToken을 읽기
         $rootScope.uid = sessionStorage.getItem("uid");
         $rootScope.authToken = sessionStorage.getItem("authToken");
+        $rootScope.uemail = sessionStorage.getItem("uemail");
 
         //$rootScope.authToken의 값의 변화를 감시
         $rootScope.$watch("authToken", (newValue) => {
@@ -26,8 +27,10 @@ angular.module("app", ["ngRoute"]) //대괄호가 있으면 생성, 없으면 �
 
         $scope.logout = () => {
             $rootScope.uid="";
+            $rootScope.uemail="";
             $rootScope.authToken="";
             sessionStorage.removeItem("uid");
+            sessionStorage.removeItem("uemail");
             sessionStorage.removeItem("authToken");
             $location.url("/home");
         }
