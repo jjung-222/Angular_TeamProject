@@ -9,6 +9,11 @@ angular.module("app")
                 return promise;
             },
 
+            bestReview: function() {
+                const promise = $http.get(BASE_URL + "/bsetReview");
+                return promise;
+            },
+
             readReview: function(boardno) {
                 const promise = $http.get(BASE_URL+"/"+ boardno);
                 return promise;
