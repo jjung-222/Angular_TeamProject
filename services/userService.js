@@ -47,6 +47,14 @@ angular.module("app")
       delete: function(boardno) {
         const promise = $http.delete(BASE_URL + "/" + boardno);
         return promise;
+      },
+      userCount : function() {
+        const promise = $http.get(BASE_URL + "/count");
+        return promise;
+      },
+      adminlist : function() {
+        const promise = $http.get(BASE_URL + "/list");
+        return promise;
       }
     }
   });
