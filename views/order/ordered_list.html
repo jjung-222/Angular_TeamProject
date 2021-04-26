@@ -15,11 +15,11 @@
 
         <div class="mr-1">
             <input type="text" class="form-control form-control-sm" 
-                        ng-keypress="onKeyPress($event, type)"
-                        ng-model="keyword"/>
+                        ng-keypress="onKeyPress($event, type, word)"
+                        ng-model="word"/>
         </div>
         <div>
-            <button class="btn btn-sm btn-secondary" ng-click="getList(1, type)">검색</button>
+            <button class="btn btn-sm btn-secondary" ng-click="getList(1, type, word)">검색</button>
         </div>
     </div>
 

@@ -16,12 +16,12 @@ angular.module("app")
                     $rootScope.orderKeyword == null){
                         $scope.getList(1);
                 } else { // 상세 페이지에서 다시 주문 내역으로 나왔을때
-                    console.log("널이 아님");
                  
                     $scope.searchType =  $rootScope.orderSearchType;
                     $scope.keyword = $rootScope.orderKeyword;
                     $scope.pageNo = $rootScope.orderPageNo;
                     $scope.type =  $rootScope.orderSearchType;
+                    $scope.word = $rootScope.orderKeyword;
 
                     $rootScope.orderSearchType = null;
                     $rootScope.orderKeyword = null;
@@ -33,9 +33,10 @@ angular.module("app")
         });
         $scope.type = "userid";
 
-        $scope.getList = (pageNo, searchType) => {
-            if(searchType != null){
+        $scope.getList = (pageNo, searchType, word) => {
+            if(searchType != null && word != null){
                 $scope.searchType = searchType;
+                $scope.keyword = word;
             }
 
             orderService.list(pageNo, $scope.searchType, $scope.keyword)//promise를 가져옴
@@ -62,7 +63,12 @@ angular.module("app")
         $scope.orderView = (orderno) => {
            
             $rootScope.orderPageNo = $scope.pager.pageNo;
-            $rootScope.orderSearchType = $scope.searchType;
+            if($scope.searchType == null){
+                $rootScope.orderSearchType = $scope.type;
+            } else {
+                $rootScope.orderSearchType = $scope.searchType;
+            }
+            
             $rootScope.orderKeyword = $scope.keyword;
 
             orderService.orderView(orderno)
@@ -99,15 +105,12 @@ angular.module("app")
             
         };
 
-        $scope.onKeyPress = function($event, type){
+        $scope.onKeyPress = function($event, type, word){
             if($event.keyCode == 13){
-                $scope.getList(1, type);
+                $scope.getList(1, type, word);
             }else{
                 console.log("not pressed enter key");
             }
         };
 
-        // $scope.test = (searchType) => {
-        //     console.log(searchType);
-        // }
     });
