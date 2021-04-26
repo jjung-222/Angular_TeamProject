@@ -17,6 +17,10 @@ angular.module("app")
                 const promise = $http.delete(BASE_URL + "/" + boardno);
 
                 return promise;
+            },
+
+            battachUrl: function(boardno) {
+                return BASE_URL + "/battach/" + boardno;
             }
         }
 

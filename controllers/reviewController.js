@@ -64,4 +64,7 @@ angular.module("app")
             }
         };
 
+        $scope.battachUrl = (boardno) => {
+            return reviewService.battachUrl(boardno);
+        };
     });
