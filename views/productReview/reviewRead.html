@@ -5,6 +5,13 @@
     <div class="card-body">
         <div>
             <div class="form-group">
+                <label>사진:</label>
+                <a ng-hide="review.borgimg == null" href="{{battachUrl(review.boardno)}}">
+                    <img src="{{battachUrl(review.boardno)}}" width="200"/>
+                </a>
+            </div>
+
+            <div class="form-group">
                 <label>제목:</label>
                 <input class="form-control" ng-value="review.btitle" readonly/>
             </div>
