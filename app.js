@@ -39,4 +39,8 @@ angular.module("app", ["ngRoute"]) //대괄호가 있으면 생성, 없으면 �
             }
         }
 
+        $scope.$on("search", (event, message) => {
+            $rootScope.searchType=message.searchType;
+            $rootScope.keyword=message.keyword;
+        });
     });

@@ -1,0 +1,63 @@
+
+
+<div class="form-group row ml-0 mr-0 mt-3">
+
+    <div class="mr-1">
+        <select class="form-control form-control-sm" ng-model="searchType" ng-required="true">
+            <option value="titlecontent">제목+내용</option>
+            <option value="userid">작성자</option>
+            <option value="productname">상품명</option>
+        </select>
+    </div>
+
+    <div class="mr-1">
+        <input type="text" class="form-control form-control-sm" 
+                    ng-keypress="onKeyPress($event, searchType, keyword)"
+                    ng-model="keyword"/>
+    </div>
+                   <!-- ng-keypress="onKeyPress($event, searchType, keyword)" -->
+    <div>
+        <button class="btn btn-sm btn-secondary" ng-click="getList(1, searchType, keyword)">검색</button>
+    </div>
+</div>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th>날짜</th>
+            <th>조회수</th>
+        </tr>
+        <tr ng-repeat="review in reviews">
+            <td>{{review.boardno}}</td>
+            <td>{{review.pname}}</td>
+            <td><a ng-click="read(review.boardno)" href="">{{review.btitle}}</a></td>
+            <td>{{review.userid}}</td>
+            <td>{{review.bdate | date:"yyyy.MM.dd"}}</td>
+            <td>{{review.bcount}}</td>
+        </tr>
+        <tr ng-if="reviews.length != '0'">
+            <td colspan="6" style="text-align: center;" >
+                <button class="btn btn-outline-primary btn-sm" 
+                        ng-click="getList(1)">처음</button> 
+                <button class="btn btn-outline-info btn-sm" 
+                        ng-show="pager.groupNo>1" 
+                        ng-click="getList(pager.startPageNo-1)">이전</button>
+                <button ng-repeat="i in pageRange"
+                        class="btn btn-sm {{(pager.pageNo==i)?'btn-danger':'btn-outline-success'}} {{!$last?'mr-1':''}}" 
+                        ng-click="getList(i)">{{i}}</button>
+                <button class="btn btn-outline-info btn-sm" 
+                        ng-show="pager.groupNo < pager.totalGroupNo" 
+                        ng-click="getList(pager.endPageNo+1)">다음</button>
+                <button class="btn btn-outline-primary btn-sm" 
+                        ng-click="getList(pager.totalPageNo)">맨끝</button>
+            </td>
+        </tr>
+    </table>
+
+    <div class="text-center" ng-if="reviews.length == '0'">
+        <p class="border pt-5 pb-5">검색 결과가 없습니다.</p>
+    </div>
+</div>

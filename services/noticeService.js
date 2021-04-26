@@ -13,7 +13,7 @@ angular.module("app")
         return promise;
       },
       create: function(notice) {
-        const promise = $http.post(BASE_URL, notice);
+        const promise = $http.post(BASE_URL, notice); //json으로 보냄
         return promise;
       },
       update: function(notice) {

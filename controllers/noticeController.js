@@ -1,5 +1,5 @@
 angular.module("app")
-  .controller("noticeController", function($scope, noticeService) { //서비스(exam26Service) 주입받음
+  .controller("noticeController", function($scope, noticeService, $rootScope, $location) { //서비스(exam26Service) 주입받음
     $scope.$on("$routeChangeSuccess", () => {
       $scope.getList(1);
     });
@@ -15,7 +15,7 @@ angular.module("app")
     };
     
     $scope.createNoticeForm = () => {
-      $scope.board = null;
+      $scope.notice = null;
       $scope.view = "create";
     };
 
@@ -29,6 +29,9 @@ angular.module("app")
           $scope.pageRange.push(i);
         }
         $scope.view = "list";
+      }) .catch((response) => {
+        //$window.alert("로그인 실패: ", response.data);
+        $location.url("/home")
       });
     };
 
@@ -41,6 +44,9 @@ angular.module("app")
     };
 
     $scope.createNotice = (notice) => {
+      console.log(notice)
+      notice.userid=sessionStorage.getItem("uid");
+      console.log(notice)
       if(notice && notice.btitle && notice.bcontent) {
         
         noticeService.create(notice)

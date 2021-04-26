@@ -6,6 +6,8 @@ angular.module("app")
           $rootScope.uid = response.data.uid; //스프링의 map의 정보를 받음
           $rootScope.authToken = response.data.authToken;
           console.log($rootScope.uid);
+          console.log($rootScope.uname);
+
 
           sessionStorage.setItem("uid", response.data.uid); //세션에 저장(웹의 네트워크 콘솔)
           sessionStorage.setItem("authToken", response.data.authToken);
