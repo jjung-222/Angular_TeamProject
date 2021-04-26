@@ -1,5 +1,5 @@
 <div class="card">
-        <div ng-show="!uid">
+        <div ng-show="!uid" style>
         <form>
             <div class="form-group">
               <label for="uid">User ID</label>
@@ -24,7 +24,8 @@
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card text-dark mb-4">
-                    <div class="card-body">총 회원수[활성화]</div>
+                  <div class="card-header">총 회원수[활성화]</div>
+                    <div class="card-body"></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-secondary stretched-link" href="#">> View Details</a>
                         <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
@@ -33,7 +34,8 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card text-dark mb-4">
-                    <div class="card-body">총 리뷰수</div>
+                    <div class="card-header">총 리뷰수</div>
+                    <div class="card-body text-center"><span style="font-size: 40px;">{{reviewCount}}</span>개</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-secondary stretched-link" href="#">> View Details</a>
                         <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
@@ -42,7 +44,8 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card text-dark mb-4">
-                    <div class="card-body">총 주문수</div>
+                    <div class="card-header">총 주문수</div>
+                    <div class="card-body text-center"><span style="font-size: 40px;">{{orderCount}}</span>개</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-secondary stretched-link" href="#">> View Details</a>
                         <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
@@ -51,7 +54,8 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card text-dark mb-4">
-                    <div class="card-body">총 상품수</div>
+                    <div class="card-header">총 상품수</div>
+                    <div class="card-body"></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-secondary stretched-link" href="#">> View Details</a>
                         <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
@@ -80,19 +84,56 @@
             </div>
         </div>
         <div class="card mb-4">
+          <div class="card-header">
+              <i class="fas fa-table mr-1"></i>
+              [베스트 리뷰] TOP 7 <a class="small text-warning stretched-link" href="#"> View Details</a>
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                              <th class="text-center" width="18%">제품사진</th>
+                              <th class="text-center" width="22%">제품명</th>
+                              <th class="text-center" width="29%">제목</th>
+                              <th class="text-center" width="10%">작성자</th>
+                              <th class="text-center" width="14%">작성일</th>
+                              <th class="text-center" width="7%">조회</th>
+                          </tr>
+                          <tr ng-repeat="review in reviews">
+                            <td class="text-center">
+                                <a ng-hide="review.borgimg == null" href="{{battachUrl(review.boardno)}}">
+                                    <img src="{{battachUrl(review.boardno)}}" height="150"/>
+                                </a>
+                            </td>
+                            <td class="text-center">{{review.pname}}</td>
+                            <td class="text-center">{{review.btitle}}</td>
+                            <td class="text-center">{{review.userid}}</td>
+                            <td class="text-center">{{review.bdate | date:"yyyy.MM.dd"}}</td>
+                            <td class="text-center">{{review.bcount}}</td>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                          
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+        <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1"></i>
-                공지사항
+                공지사항 <a class="small text-warning stretched-link" href="#"> View Details</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th width="10%">번호</th>
-                                <th width="40%">제목</th>
-                                <th width="20%">작성자</th>
-                                <th width="20%">작성일</th>
+                                <th class="text-center" width="10%">번호</th>
+                                <th class="text-center" width="40%">제목</th>
+                                <th class="text-center" width="20%">작성자</th>
+                                <th class="text-center" width="20%">작성일</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -102,5 +143,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+              <i class="fas fa-table mr-1"></i>
+              주소록 
+          </div>
+          <div class="card-body">
+              <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                          <tr>
+                              <th class="text-center" width="10%">아이디</th>
+                              <th class="text-center" width="40%">이름</th>
+                              <th class="text-center" width="20%">전화번호</th>
+                              <th class="text-center" width="20%">이메일</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
     </div>
 </div>
