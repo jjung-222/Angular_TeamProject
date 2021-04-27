@@ -4,8 +4,8 @@ angular.module("app")
         const BASE_URL = "http://localhost:8080/productReview";
 
         return {
-            list: function(pageNo=1, searchType, keyword) { // 리뷰 리스트 조회
-                const promise = $http.get(BASE_URL, {params: {pageNo, searchType, keyword}});
+            list: function(pageNo=1, searchType, keyword, sort) { // 리뷰 리스트 조회
+                const promise = $http.get(BASE_URL, {params: {pageNo, searchType, keyword, sort}});
                 return promise;
             },
 
