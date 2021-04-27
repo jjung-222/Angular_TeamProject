@@ -12,6 +12,7 @@ angular.module("app", ["ngRoute"]) //대괄호가 있으면 생성, 없으면 �
         $rootScope.uid = sessionStorage.getItem("uid");
         $rootScope.authToken = sessionStorage.getItem("authToken");
         $rootScope.uemail = sessionStorage.getItem("uemail");
+        $rootScope.uname = sessionStorage.getItem("uname");
 
         //$rootScope.authToken의 값의 변화를 감시
         $rootScope.$watch("authToken", (newValue) => {
