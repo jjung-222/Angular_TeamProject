@@ -23,6 +23,10 @@ angular.module("app")
       delete: function(boardno) {
         const promise = $http.delete(BASE_URL + "/" + boardno);
         return promise;
+      },
+      getnotice: function(pageNo=1) {
+        const promise = $http.get(BASE_URL + "/list", {params:{pageNo}});
+        return promise;
       }
     }
   });

@@ -83,4 +83,5 @@ angular.module("app")
           $scope.view = "list";
         });
     }
+
   });

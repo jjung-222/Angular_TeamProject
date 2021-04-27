@@ -40,24 +40,26 @@
               <td style="text-align: center;"><span>{{board.bdate | date:"yyyy.MM.dd"}}</span></td>
               <td style="text-align: center;"><a ng-click="delete(board.boardno,pager.pageNo)" type="button" class="btn btn-outline-danger">삭제</a></td>
           </tr>
-             <tr> 
-                <td colspan="7" style="text-align: center;">
-                   <button class="btn btn-outline-primary btn-sm" 
-                               ng-click="getList(1)">처음</button> 
-                   <button   class="btn btn-outline-info btn-sm" 
-                               ng-show="pager.groupNo>1" 
-                               ng-click="getList(pager.startPageNo-1)">이전</button> 
-                   <button ng-repeat="i in pageRange"
-                              class="btn btn-sm {{(pager.pageNo==i)?'btn-danger':'btn-outline-success'}} {{!$last?'mr-1':''}}" 
-                               ng-click="getList(i)">{{i}}</button>
-                            
-                   <button   class="btn btn-outline-info btn-sm" 
-                               ng-show="pager.groupNo < pager.totalGroupNo" 
-                               ng-click="getList(pager.endPageNo+1)">다음</button> 
-                   <button class="btn btn-outline-primary btn-sm" 
-                               ng-click="getList(pager.totalPageNo)">맨끝</button> 
-                </td>
-             </tr>
+          <td colspan="7" style="text-align: center;">
+            <button class="btn btn-dark btn-sm" 
+                        ng-click="getList(1)">처음</button> <!--처음이란 것은 항상 존재-->
+            <button   class="btn btn-light btn-sm" 
+                        ng-show="pager.groupNo>1" 
+                        ng-click="getList(pager.startPageNo-1)">이전</button> <!--있을 수도 있고 없을 수도 있음. ng-show -->
+            <button ng-repeat="i in pageRange"
+                      class="btn btn-sm {{(pager.pageNo==i)?'btn btn-secondary btn-sm':'btn btn-outline-secondary btn-sm'}} {{!$last?'mr-1':''}}" 
+                        ng-click="getList(i)">{{i}}</button>
+                        <!--pageRange라는 배열에서 숫자(i)를 하나 받아서
+                            {{(pager.pageNo==i)?'btn-danger':'btn-outline-success'}}: 현재 페이지의 색을 빨간색으로 그렇지 않다면 outline만 있도록 하기 위해서  
+                            {{!$last?'mr-1':''}} : 마지막페이지라면 마진을 줌
+                            "getList(i)">{{i}}: 클릭하면 해당 페이지로 이동
+                        -->
+            <button   class="btn btn-light btn-sm" 
+                        ng-show="pager.groupNo < pager.totalGroupNo" 
+                        ng-click="getList(pager.endPageNo+1)">다음</button> <!--맨 마지막 그룹이면 다음이 안 나옴-->
+            <button class="btn btn-dark btn-sm" 
+                        ng-click="getList(pager.totalPageNo)">맨끝</button> <!--이건 처음과 같이 항상 있어야 함-->
+        </td>
       </table>
     </div>
   </div>

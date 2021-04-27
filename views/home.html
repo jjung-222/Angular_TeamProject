@@ -1,5 +1,7 @@
-<div class="card">
-        <div ng-show="!uid" style>
+<div class="card" style="width: 1070px;"  ng-show="!uid">
+    <div class="card-header">WELCOME</div>
+    <div class="card-body">
+        <div style="width: 400px; margin: auto; margin-top: 60px; margin-bottom: 40px;">
         <form>
             <div class="form-group">
               <label for="uid">User ID</label>
@@ -10,10 +12,14 @@
               <input id="upassword" type="password" class="form-control" ng-model="user.upassword" autocomplete="current-password">
             </div>
             <!-- AngularJS는 자동 submit 기능이 없음 -->
-            <button class="btn btn-primary" ng-click="login(user)">Login</button>
+            <button class="btn btn-dark" ng-click="login(user)">Login</button>
           </form>
         </div>
     </div>
+        <div ng-show="!uid">
+            <img src="./resources/aboutus.png" style="width: 1070px;">
+        </div>
+</div>
 
     <div ng-show="uid">
       <div class="container-fluid">
@@ -163,9 +169,31 @@
                                 <th class="text-center" width="20%">작성일</th>
                             </tr>
                         </thead>
-                        <tfoot>
-                            
-                        </tbody>
+                        <tbody>
+                            <tr ng-repeat="notice in notices">
+                                <td class="text-center">{{notice.boardno}}</td>
+                                <td class="text-center">{{notice.btitle}}</td>
+                                <td class="text-center">{{notice.userid}}</td>
+                                <td class="text-center">{{notice.bdate | date:"yyyy.MM.dd"}}</td>
+                            </tr> 
+                            <tr> <!--여긴 페이저 만드는 것-->
+                                <td colspan="5" style="text-align: center;">
+                                    <button class="btn btn-dark btn-sm" 
+                                                ng-click="getNotice(1)">처음</button> <!--처음이란 것은 항상 존재-->
+                                    <button   class="btn btn-light btn-sm" 
+                                                ng-show="pager.groupNo>1" 
+                                                ng-click="getNotice(pager.startPageNo-1)">이전</button> <!--있을 수도 있고 없을 수도 있음. ng-show -->
+                                    <button ng-repeat="i in pageRange"
+                                              class="btn btn-sm {{(pager.pageNo==i)?'btn btn-secondary btn-sm':'btn btn-outline-secondary btn-sm'}} {{!$last?'mr-1':''}}" 
+                                                ng-click="getNotice(i)">{{i}}</button>
+                                    <button   class="btn btn-light btn-sm" 
+                                                ng-show="pager.groupNo < pager.totalGroupNo" 
+                                                ng-click="getNotice(pager.endPageNo+1)">다음</button> <!--맨 마지막 그룹이면 다음이 안 나옴-->
+                                    <button class="btn btn-dark btn-sm" 
+                                                ng-click="getNotice(pager.totalPageNo)">맨끝</button> <!--이건 처음과 같이 항상 있어야 함-->
+                                </td>
+                              </tr>
+                          </tbody>
                     </table>
                 </div>
             </div>
