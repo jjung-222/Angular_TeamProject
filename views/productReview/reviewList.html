@@ -22,13 +22,13 @@
 <div>
     <table class="table table-bordered">
         <tr>
-            <th>번호</th>
-            <th>사진</th>
-            <th>상품명</th>
-            <th>제목</th>
-            <th>글쓴이</th>
-            <th>날짜</th>
-            <th>조회수</th>
+            <th width="9%" ng-click="getList(pager.pageNo, null, null, 'boardno')" style="cursor: pointer;">번호<img ng-if="reviewSort == 'boardno'" src="./resources/caret-down-fill.svg"></th>
+            <th width="18%">사진</th>
+            <th width="20%" ng-click="getList(pager.pageNo, null, null, 'pname')" style="cursor: pointer;">상품명<img ng-if="reviewSort == 'pname'" src="./resources/caret-down-fill.svg"></th>
+            <th width="18%" ng-click="getList(pager.pageNo, null, null, 'btitle')" style="cursor: pointer;">제목<img ng-if="reviewSort == 'btitle'" src="./resources/caret-down-fill.svg"></th>
+            <th width="10%" ng-click="getList(pager.pageNo, null, null, 'userid')" style="cursor: pointer;">글쓴이<img ng-if="reviewSort == 'userid'" src="./resources/caret-down-fill.svg"></th>
+            <th width="15%" ng-click="getList(pager.pageNo, null, null, 'bdate')" style="cursor: pointer;">날짜<img ng-if="reviewSort == 'bdate'" src="./resources/caret-down-fill.svg"></th>
+            <th width="10%" ng-click="getList(pager.pageNo, null, null, 'bcount')" style="cursor: pointer;">조회수<img ng-if="reviewSort == 'bcount'" src="./resources/caret-down-fill.svg"></th>
         </tr>
         <tr ng-repeat="review in reviews">
             <td class="align-middle">{{review.boardno}}</td>

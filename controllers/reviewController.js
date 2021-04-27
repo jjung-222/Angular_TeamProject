@@ -14,14 +14,17 @@ angular.module("app")
         }
 
         $scope.searchType = "titlecontent";
+        $scope.reviewSort = "boardno";
 
-        $scope.getList = (pageNo, type, word) => {
+        $scope.getList = (pageNo, type, word, sort) => {
             if(type != null && word != null){
                 $scope.searchType = type;
                 $scope.keyword = word;
             }
-
-            reviewService.list(pageNo, $scope.searchType, $scope.keyword)//promise를 가져옴
+            if(sort != null){
+                $scope.reviewSort = sort;
+            }
+            reviewService.list(pageNo, $scope.searchType, $scope.keyword, $scope.reviewSort)//promise를 가져옴
                 .then((response) => {
                     $scope.pager = response.data.pager;
                     $scope.reviews = response.data.reviews;
