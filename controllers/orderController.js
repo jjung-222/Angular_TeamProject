@@ -51,15 +51,6 @@ angular.module("app")
                 });
         };
 
-        $scope.getTotal = (orderproductlist) => {
-            let total = 0;
-            for(let i = 0; i < orderproductlist.length ; i++) {
-                total += orderproductlist[i].pprice;
-            }
-
-            return total;
-        };
-
         $scope.orderView = (orderno) => {
            
             $rootScope.orderPageNo = $scope.pager.pageNo;
@@ -71,12 +62,8 @@ angular.module("app")
             
             $rootScope.orderKeyword = $scope.keyword;
 
-            orderService.orderView(orderno)
-                .then((response) => {
-                    $scope.order = response.data;
-                    const path = `/ordered_view/${orderno}`;
-                    $location.url(path);
-                });
+            const path = `/ordered_view/${orderno}`;
+            $location.url(path);
         };
 
         $scope.cancelStatus = () => {
