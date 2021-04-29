@@ -8,6 +8,22 @@ angular.module("app")
         const promise = $http.get(BASE_URL, {params:{pageNo}}); //get이 리턴하는 것이 무엇? promise(비동기 처리하는 것)
         return promise;
       },
+      list1: function(pageNo=1) { //pageNo가 넘어오지 않으면 디폴트 값은 1
+        const promise = $http.get(BASE_URL+"/list1", {params:{pageNo}}); //get이 리턴하는 것이 무엇? promise(비동기 처리하는 것)
+        return promise;
+      },
+      list2: function(pageNo=1) { //pageNo가 넘어오지 않으면 디폴트 값은 1
+        const promise = $http.get(BASE_URL+"/list2", {params:{pageNo}}); //get이 리턴하는 것이 무엇? promise(비동기 처리하는 것)
+        return promise;
+      },
+      list3: function(pageNo=1) { //pageNo가 넘어오지 않으면 디폴트 값은 1
+        const promise = $http.get(BASE_URL+"/list3", {params:{pageNo}}); //get이 리턴하는 것이 무엇? promise(비동기 처리하는 것)
+        return promise;
+      },
+      list4: function(pageNo=1) { //pageNo가 넘어오지 않으면 디폴트 값은 1
+        const promise = $http.get(BASE_URL+"/list4", {params:{pageNo}}); //get이 리턴하는 것이 무엇? promise(비동기 처리하는 것)
+        return promise;
+      },
       mainlist: function() { 
         const promise = $http.get(BASE_URL+ "/mainlist");
         return promise;

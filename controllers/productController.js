@@ -13,15 +13,7 @@ angular.module("app")
         case "update": return "views/product/product_update.html"
       }
     };
-
-    $scope.getMainList = () => {      
-      productService.mainlist()
-      .then((response) => {
-        $scope.totalRows = response.data.totalRows;
-        $scope.best = response.data.best;
-        $scope.newitem = response.data.newitem;
-      });
-    }
+    
 
     $scope.createProductForm = () => {
       $scope.product = null;
@@ -36,28 +28,103 @@ angular.module("app")
       return productService.imgbattachUrl(imgno);
     };
 
-    $scope.getList = (pageNo) => {
-      productService.list(pageNo)
-      .then((response) => { //성공적으로 되면 response 객체 얻음
-        $scope.pager = response.data.pager;
-        //$scope.users = response.data.users;        
-        $scope.products = response.data.products;
-        
-        $scope.pageRange = []; //배열 선언
-        for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
-          $scope.pageRange.push(i);
-        }
-        $scope.view = "list";
+    $scope.getMainList = () => {      
+      productService.mainlist()
+      .then((response) => {
+        $scope.totalRows = response.data.totalRows;
+        $scope.best = response.data.best;
+        $scope.newitem = response.data.newitem;
       });
+    }
+
+  
+    $scope.getList = (pageNo, category) => {    
+      if(category == null ){
+        productService.list(pageNo)
+        .then((response) => { //성공적으로 되면 response 객체 얻음
+          $scope.pager = response.data.pager;
+          $scope.products = response.data.products;   
+          $scope.category = '전체상품';
+          $scope.pageRange = []; //배열 선언
+          for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
+            $scope.pageRange.push(i);
+          }
+          $scope.view = "list";
+        });
+      }
+
+      if(category === "전체상품"){
+        productService.list(pageNo)
+        .then((response) => { //성공적으로 되면 response 객체 얻음
+          $scope.pager = response.data.pager;
+          $scope.products = response.data.products;   
+          $scope.category = '전체상품';
+          $scope.pageRange = []; //배열 선언
+          for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
+            $scope.pageRange.push(i);
+          }
+          $scope.view = "list";
+        });
+      }
+      
+      if(category === "인테리어소품"){
+        productService.list1(pageNo)
+        .then((response) => { //성공적으로 되면 response 객체 얻음
+          $scope.pager = response.data.pager1;
+          $scope.products = response.data.products1;
+          $scope.category = '인테리어소품';        
+          $scope.pageRange = []; //배열 선언
+          for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
+            $scope.pageRange.push(i);
+          }
+          $scope.view = "list";
+        });
+      }
+
+      if(category === "디퓨저/캔들"){
+        productService.list2(pageNo)
+        .then((response) => { //성공적으로 되면 response 객체 얻음
+          $scope.pager = response.data.pager2;
+          $scope.products = response.data.products2;  
+          $scope.category = '디퓨저/캔들';       
+          $scope.pageRange = []; //배열 선언
+          for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
+            $scope.pageRange.push(i);
+          }
+          $scope.view = "list";
+        });
+      }
+
+      if(category === "액자"){
+        productService.list3(pageNo)
+        .then((response) => { //성공적으로 되면 response 객체 얻음
+          $scope.pager = response.data.pager3;
+          $scope.products = response.data.products3;
+          $scope.category = '액자';         
+          $scope.pageRange = []; //배열 선언
+          for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
+            $scope.pageRange.push(i);
+          }
+          $scope.view = "list";
+        });
+      }
+
+      if(category === "조화/화병"){
+        productService.list4(pageNo)
+        .then((response) => { //성공적으로 되면 response 객체 얻음
+          $scope.pager = response.data.pager4;
+          $scope.products = response.data.products4;  
+          $scope.category = '조화/화병'; 
+          $scope.pageRange = []; //배열 선언
+          for(var i=$scope.pager.startPageNo; i<=$scope.pager.endPageNo; i++){
+            $scope.pageRange.push(i);
+          }
+          $scope.view = "list";
+        });
+      }
     };
 
-
-    $scope.categoryList = [1, 2, 3, 4];
-    $scope.categoryVal = 1;
-    $scope.getCategoryVal = () => {
-       return $scope.categoryVal===1? "" : $scope.categoryVal;
-     };
-
+    
 
     $scope.read = (productno) => {
       productService.read(productno)
@@ -106,7 +173,6 @@ angular.module("app")
           });
       }
     };
-
 
     $scope.cancel = () => {
       $scope.getList($scope.pager.pageNo);
