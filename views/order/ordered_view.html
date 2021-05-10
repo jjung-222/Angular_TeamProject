@@ -74,9 +74,9 @@
             </table>
             <div style="text-align: center;"><a class="btn btn-dark mt-5" href="/#!/ordered_list">주문 목록으로</a></div>
 
-            <button ng-if="order.ostatus != '배송완료' && order.ostatus != '취소'" class="btn btn-outline-dark btn-sm" 
+            <button ng-if="order.ostatus == '배송중'" class="btn btn-outline-dark btn-sm" 
                     ng-click="completeStatus()">배송 완료</button>
-            <button ng-if="order.ostatus != '취소' && order.ostatus != '배송완료'" class="btn btn-outline-dark btn-sm" 
+            <button ng-if="order.ostatus == '배송중' || order.ostatus == '배송완료'" class="btn btn-outline-dark btn-sm" 
                     ng-click="cancelStatus()">배송 취소</button>
 
         </div>

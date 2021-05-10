@@ -52,7 +52,7 @@ angular.module("app")
         };
 
         $scope.orderView = (orderno) => {
-           
+            
             $rootScope.orderPageNo = $scope.pager.pageNo;
             if($scope.searchType == null){
                 $rootScope.orderSearchType = $scope.type;
